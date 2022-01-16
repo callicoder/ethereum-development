@@ -6,7 +6,7 @@ pragma solidity ^0.8.0;
 import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
 // OpenZeppelin => import SafeMath or (import "@chainlink/contracts/src/v0.6/vendor/SafeMathChainlink.sol")
-// Not needed from Solidity 0.0.8
+// Not needed from Solidity 0.8.0
 
 // This contract should be able to accept some type of payment (Payable)
 contract FundMe {
