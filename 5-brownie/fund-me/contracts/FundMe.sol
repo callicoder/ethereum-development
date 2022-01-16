@@ -1,29 +1,20 @@
 // SPDX-License-Identifier: GPL-3.0
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.6.0;
 
 // Interfaces compile down to an ABI. It tells solidity what functions can be called on the contract
-import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
+import "@chainlink/contracts/src/v0.6/interfaces/AggregatorV3Interface.sol";
 
 // OpenZeppelin => import SafeMath or (import "@chainlink/contracts/src/v0.6/vendor/SafeMathChainlink.sol")
 // Not needed from Solidity 0.8.0
 
 // This contract should be able to accept some type of payment (Payable)
 contract FundMe {
-    AggregatorV3Interface internal priceFeed;
+    AggregatorV3Interface public priceFeed;
     address public owner;
 
-    /**
-     * Network: Kovan
-     * Aggregator: ETH/USD
-     * Address: 0x9326BFA02ADD2366b30bacB125260Af641031331
-     */
-    constructor() {
-        // Find the address of where this contract is located (https://docs.chain.link/docs/ethereum-addresses/) (Kovan testnet)
-        priceFeed = AggregatorV3Interface(
-            0x9326BFA02ADD2366b30bacB125260Af641031331
-        );
-
+    constructor(address _priceFeed) public {
+        priceFeed = AggregatorV3Interface(_priceFeed);
         // The one who deploys this smart contract
         owner = msg.sender;
     }
@@ -71,6 +62,14 @@ contract FundMe {
         uint256 ethPrice = getPrice();
         uint256 ethAmountInUSD = (ethAmount * ethPrice) / 10**18; // (Divide by 10^18 because ethPrice has an additional 10^18 in it)
         return ethAmountInUSD;
+    }
+
+    function getEntranceFee() public view returns (uint256) {
+        // minimumUSD
+        uint256 minimumUSD = 50 * 10**18;
+        uint256 price = getPrice();
+        uint256 precision = 1 * 10**18;
+        return (minimumUSD * precision) / price;
     }
 
     modifier onlyOwner() {

@@ -49,6 +49,12 @@ brownie networks list
 brownie run scripts/deploy.py --network kovan
 ```
 
+**Add network**
+
+```bash
+brownie networks add Ethereum ganache-local host=http://127.0.0.1:7545 chainid=1337
+```
+
 **Console**
 
 ```bash
