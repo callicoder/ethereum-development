@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0
 
-pragma solidity ^0.6.0;
+pragma solidity ^0.8.0;
 
 // Interfaces compile down to an ABI. It tells solidity what functions can be called on the contract
-import "@chainlink/contracts/src/v0.6/interfaces/AggregatorV3Interface.sol";
+import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
 // OpenZeppelin => import SafeMath or (import "@chainlink/contracts/src/v0.6/vendor/SafeMathChainlink.sol")
 // Not needed from Solidity 0.8.0

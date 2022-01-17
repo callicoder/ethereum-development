@@ -3,11 +3,11 @@ from scripts.helpers import get_account, LOCAL_BLOCKCHAIN_ENVIRONMENTS
 from scripts.deploy import deploy_fund_me
 import pytest
 
-
+# TODO: Not working on mainnet-fork-dev
 def test_can_fund_and_withdraw():
     account = get_account()
     fund_me = deploy_fund_me()
-    entrance_fee = fund_me.getEntranceFee()
+    entrance_fee = fund_me.getConversionRate(10000)
 
     tx = fund_me.fund({"from": account, "value": entrance_fee})
     tx.wait(1)

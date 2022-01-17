@@ -60,3 +60,9 @@ brownie networks add Ethereum ganache-local host=http://127.0.0.1:7545 chainid=1
 ```bash
 brownie console
 ```
+
+**Forked dev environment**
+
+```bash
+brownie networks add development mainnet-fork-dev cmd=ganache-cli host=http://127.0.0.1 fork='https://eth-mainnet.alchemyapi.io/v2/PJ0OhJFMF9FFmwc3T9biMiaDGrmB8xPl' accounts=10 mnemonic=brownie port=7545
+```
