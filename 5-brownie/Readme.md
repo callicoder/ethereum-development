@@ -66,3 +66,9 @@ brownie console
 ```bash
 brownie networks add development mainnet-fork-dev cmd=ganache-cli host=http://127.0.0.1 fork='https://eth-mainnet.alchemyapi.io/v2/PJ0OhJFMF9FFmwc3T9biMiaDGrmB8xPl' accounts=10 mnemonic=brownie port=7545
 ```
+
+## Boilerplate
+
+```
+brownie bake chainlink-mix
+```
